@@ -1,0 +1,17 @@
+/**
+ */
+
+@import 'tailwindcss';
+
+@source '../../';
+
+@import './presets/common.css';
+
+/* LazyLoad */
+img:not([src]):not([srcset]) {
+  @apply invisible;
+}
+
+img.lazy-loaded {
+  @apply bg-none;
+}

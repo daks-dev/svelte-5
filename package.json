@@ -1,0 +1,65 @@
+{
+  "name": "@daks.dev/svelte",
+  "version": "0.1.0",
+  "description": "DAKS.DEV Svelte monorepo",
+  "private": false,
+  "scripts": {
+    "check": "pnpm -r check",
+    "run:prettier": "prettier --plugin=prettier-plugin-svelte --plugin=prettier-plugin-tailwindcss",
+    "lint": "pnpm run:prettier --check . && eslint .",
+    "format": "pnpm run:prettier --write .",
+    "package:recursive": "pnpm -r package --filter=./packages/*",
+    "up:recursive": "pnpm -r up"
+  },
+  "devDependencies": {
+    "@daks.dev/svelte.sdk": "workspace:^",
+    "@eslint/compat": "^1.2.5",
+    "@eslint/js": "^9.18.0",
+    "@sveltejs/kit": "^2.16.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-svelte": "^3.0.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "svelte": "^5.0.0",
+    "svelte-check": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.0.0, <5.8.0",
+    "typescript-eslint": "^8.25.0",
+    "vite": "^6.0.0"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=16.20.2",
+    "pnpm": ">=8.7.0"
+  },
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daks-dev/svelte.git"
+  },
+  "bugs": "https://github.com/daks-dev/svelte/issues",
+  "author": {
+    "name": "DVA",
+    "email": "mail@daks.dev",
+    "url": "https://daks.dev"
+  },
+  "homepage": "https://daks.dev/",
+  "keywords": [
+    "svelte",
+    "sveltekit",
+    "tailwindcss",
+    "imagetools",
+    "vite-imagetools",
+    "vite-plugin",
+    "yandex"
+  ]
+}

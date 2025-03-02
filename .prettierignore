@@ -1,0 +1,12 @@
+node_modules/
+
+__tmp__/
+
+.svelte-kit/
+build/
+dist/
+dist-ssr/
+
+static/
+
+.master/
