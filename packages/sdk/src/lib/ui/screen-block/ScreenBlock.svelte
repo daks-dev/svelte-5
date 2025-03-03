@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { twMerge } from 'tailwind-merge';
-  import icon from './default.svg';
+  import icon from './default.svg?no-inline';
 
   let className: ClassName = 'bg-neutral-100 dark:bg-gray-800';
   export { className as class };
@@ -41,6 +41,5 @@
     className
   )}
   style:background-image={image ? `url(${image})` : undefined}
-  aria-hidden="true"
-  hidden>
+  aria-hidden="true">
 </div>

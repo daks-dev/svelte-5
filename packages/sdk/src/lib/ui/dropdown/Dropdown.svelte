@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import Icon, { isIcon } from '../../app/iconify/index.js';
   import Link from '../navigate/Link.svelte';
   import { twMerge } from 'tailwind-merge';
@@ -41,7 +41,7 @@
   }
 
   function handleDblClick(ev: Event) {
-    if (href && $page.url.pathname !== href) {
+    if (href && page.url.pathname !== href) {
       ev.stopPropagation();
       close();
       goto(href);
@@ -81,7 +81,7 @@
         <Icon
           icon="ic:round-chevron-right"
           class="pointer-events-none"
-          rotate={hidden ? ($page.url.pathname.indexOf(`${href}/`) === 0 ? 90 : 45) : -45}
+          rotate={hidden ? (page.url.pathname.indexOf(`${href}/`) === 0 ? 90 : 45) : -45}
           size="1em" />
       {/if}
     </svelte:fragment>

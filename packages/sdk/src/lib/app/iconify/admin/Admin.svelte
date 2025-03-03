@@ -1,6 +1,6 @@
 <script lang="ts">
   import { DEV } from 'esm-env';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import type { IconifyBundle } from '../index.d.ts';
   import Bundle from './Bundle.svelte';
 
@@ -28,7 +28,7 @@
 
   const upload = async () => {
     waiting = true;
-    await fetch(`${$page.url.pathname}/upload`).then(
+    await fetch(`${page.url.pathname}/upload`).then(
       (res) => res.ok || alert('Error GET: ' + res.status)
     );
     waiting = false;
@@ -89,7 +89,7 @@
   {/each}
 </section>
 
-<style>
+<style scoped>
   .iconify-admin-upload {
     display: flex;
     align-items: center;

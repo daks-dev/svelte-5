@@ -65,7 +65,7 @@ class Nav implements Partial<NavItem> {
       target: this.active ? undefined : this.href && this.target,
       'aria-current': this.current,
       itemprop:
-        this.active || this.external ? undefined : this.itemprop ?? (this.href && 'relatedLink')
+        this.active || this.external ? undefined : (this.itemprop ?? (this.href && 'relatedLink'))
     };
   }
 
@@ -77,13 +77,13 @@ class Nav implements Partial<NavItem> {
   static map = function (items?: Partial<NavItem>[], fully = false, base = '') {
     return items?.length
       ? items.reduce((map, item) => {
-        if (!item.disallow || fully) {
-          const href = `${item.base ?? base}${item.href ?? ''}`;
-          item.href && map.push(href);
-          item.links && map.push(...Nav.map(item.links, fully, href));
-        }
-        return map;
-      }, Array(0))
+          if (!item.disallow || fully) {
+            const href = `${item.base ?? base}${item.href ?? ''}`;
+            item.href && map.push(href);
+            item.links && map.push(...Nav.map(item.links, fully, href));
+          }
+          return map;
+        }, Array(0))
       : [];
   };
 }

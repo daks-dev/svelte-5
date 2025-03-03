@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   // TODO:
-  // import { env } from '$env/dynamic/public';
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import Icon from '../../iconify/Icon.svelte';

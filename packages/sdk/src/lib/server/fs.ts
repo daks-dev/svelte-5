@@ -54,9 +54,8 @@ export async function remove(src: string) {
     .stat(src)
     .then(
       async (stats) =>
-        await (stats.isFile()
-          ? fs.unlink(src)
-          : fs.rm(src, { recursive: true, force: true })
+        await (
+          stats.isFile() ? fs.unlink(src) : fs.rm(src, { recursive: true, force: true })
         ).catch(error)
     )
     .catch(error);

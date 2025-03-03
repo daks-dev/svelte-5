@@ -1,4 +1,4 @@
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { imagetools } from './src/lib/app/imagetools/server.js';
 import { yaml } from './src/lib/app/vite/plugin-yaml.js';

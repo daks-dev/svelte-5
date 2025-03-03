@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import Icon, { isIcon } from '../../app/iconify/index.js';
   import { twMerge } from 'tailwind-merge';
   import Link from './Link.svelte';
@@ -17,7 +17,7 @@
   href="/"
   aria-label={label}>
   <span class="sr-only">{@html brand.label}</span>
-  {#if $page.url.pathname === '/'}
+  {#if page.url.pathname === '/'}
     {#if home}
       {#if isIcon(home)}
         <Icon

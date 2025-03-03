@@ -20,6 +20,5 @@ export default async function () {
     file = rootpath(assets, 'bundles.json');
     await access(file, async () => await writeFile(file, '[]', 'w+'));
     console.debug('SSR iconify');
-  }
-  else new DOMException('Alias $iconify missing', 'Svelte Config');
+  } else new DOMException('Alias $iconify missing', 'Svelte Config');
 }

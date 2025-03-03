@@ -13,8 +13,8 @@
 <div
   class="
     grid grid-cols-2 gap-8
-    py-4 text-neutral-600 dark:text-neutral-400 sm:grid-cols-3
-    md:grid-cols-4 lg:grid-cols-5">
+    py-4 text-neutral-600 sm:grid-cols-3 md:grid-cols-4
+    lg:grid-cols-5 dark:text-neutral-400">
   {#each icons as icon}
     {@const name = `${prefix}:${icon}`}
     <button

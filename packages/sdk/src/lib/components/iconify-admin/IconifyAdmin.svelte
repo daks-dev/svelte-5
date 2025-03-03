@@ -1,6 +1,6 @@
 <script lang="ts">
   import { DEV } from 'esm-env';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import Icon from '../../app/iconify/Icon.svelte';
   import Bundle from './Bundle.svelte';
   import type { IconifyBundle } from '../../app/iconify/index.d.ts';
@@ -17,7 +17,7 @@
 
   const upload = async () => {
     waiting = true;
-    await fetch(`${$page.url.pathname}/upload`).then(
+    await fetch(`${page.url.pathname}/upload`).then(
       (res) => res.ok || alert('Error GET: ' + res.status)
     );
     waiting = false;

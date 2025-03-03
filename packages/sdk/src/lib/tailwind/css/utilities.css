@@ -37,6 +37,10 @@
   }
 }
 
+@utility bg-* {
+  background-size: --value(percentage);
+}
+
 @utility content-empty {
   content: '';
 }
@@ -84,24 +88,6 @@
 @utility linejoin-round {
   stroke-linejoin: round;
 }
-
-/*
-@utility vector-non-scaling-stroke {
-  vector-effect: non-scaling-stroke;
-}
-@utility vector-non-scaling-size {
-  vector-effect: non-scaling-size;
-}
-@utility vector-non-rotation {
-  vector-effect: non-rotation;
-}
-@utility vector-fixed-position {
-  vector-effect: fixed-position;
-}
-@utility vector-effect-none {
-  vector-effect: none;
-}
-*/
 
 @utility button {
   display: flex;

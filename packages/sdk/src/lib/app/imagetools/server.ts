@@ -18,12 +18,12 @@ export const imagetools = (format: string | number = 'webp', quality: number = 8
               ...(url.searchParams.has('url')
                 ? { as: 'url' }
                 : url.searchParams.has('srcset')
-                ? { as: 'srcset' }
-                : url.searchParams.has('picture')
-                ? { as: 'picture' }
-                : url.searchParams.has('meta') || url.searchParams.has('metadata')
-                ? { as: 'meta:src;width;height;format;orientation' }
-                : {})
+                  ? { as: 'srcset' }
+                  : url.searchParams.has('picture')
+                    ? { as: 'picture' }
+                    : url.searchParams.has('meta') || url.searchParams.has('metadata')
+                      ? { as: 'meta:src;width;height;format;orientation' }
+                      : {})
             }
           : undefined
       );

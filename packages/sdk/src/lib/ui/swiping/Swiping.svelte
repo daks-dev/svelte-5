@@ -1,6 +1,6 @@
 <script lang="ts">
   import { afterNavigate, goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { swipe } from '$lib/utils/Swipe.js';
   import { navigate, routeTransitionMode } from '$lib/stores/index.js';
 
@@ -15,11 +15,11 @@
       if ($navigate?.prev && $navigate?.next) {
         href = delta.x > 0 ? $navigate.prev.href : $navigate.next.href;
       } else {
-        let idx = scope.indexOf($page.url.pathname);
+        let idx = scope.indexOf(page.url.pathname);
         if (idx > -1) {
           idx += delta.x > 0 ? -1 : 1;
           if (idx === scope.length) idx = -1;
-        } else if ($page.url.pathname === '/') {
+        } else if (page.url.pathname === '/') {
           idx = delta.x > 0 ? scope.length - 1 : 0;
         }
         href = idx === -1 ? '/' : scope[idx];

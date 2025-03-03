@@ -1,7 +1,5 @@
 <script lang="ts">
-  //TODO:
-  // import { env } from '$env/dynamic/public';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
   type AppMeta = Record<'themeColor' | 'tileColor' | 'shortName', string>;
 
@@ -13,7 +11,7 @@
   export let description: string | undefined = undefined;
   export let canonical =
     process.env.PUBLIC_APP_CANONICAL &&
-    `${new URL(process.env.PUBLIC_APP_CANONICAL).origin}${$page.url.pathname}`;
+    `${new URL(process.env.PUBLIC_APP_CANONICAL).origin}${page.url.pathname}`;
 </script>
 
 <svelte:head>
@@ -44,7 +42,7 @@
         name="robots"
         content={robots} />
     {/if}
-    <title>{title || `-- ${$page.url.pathname} --`}</title>
+    <title>{title || `-- ${page.url.pathname} --`}</title>
     {#if description}
       <meta
         name="description"
