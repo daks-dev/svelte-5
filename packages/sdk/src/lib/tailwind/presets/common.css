@@ -6,14 +6,6 @@
   --breakpoint-xs: 30rem;
   --breakpoint-3xl: 120rem;
 
-  --text-3xs: 0.5rem;
-  --text-3xs--line-height: calc(0.75 / 0.5);
-  --text-2xs: 0.625rem;
-  --text-2xs--line-height: calc(0.875 / 0.625);
-
-  --aspect-A4: calc(620 / 877);
-  --aspect-A4l: calc(877 / 620);
-
   --radius-5xl: 2.5rem;
   --radius-6xl: 3rem;
 
@@ -27,7 +19,10 @@
 @import '../css/utilities.css';
 @import '../css/variants.css';
 
+@plugin '../plugins/config';
+
 @plugin '../plugins/grid-area';
 @plugin '../plugins/gradient';
 @plugin '../plugins/wrapper';
+
 @plugin '../plugins/svg/vector-effect';

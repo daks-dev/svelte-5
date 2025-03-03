@@ -37,6 +37,10 @@
   }
 }
 
+@utility content-empty {
+  content: '';
+}
+
 @utility clear-pseudo {
   &::before {
     content: '';

@@ -1,1 +1,5 @@
 @reference './lib/tailwind/';
+
+.test {
+  @apply text-2.5xl xs:content-empty oversee:aspect-3/4 page:text-red-700;
+}
