@@ -1,6 +1,10 @@
 /**
  */
 
+@utility container {
+  margin-inline: auto;
+}
+
 @utility animation-paused {
   animation-play-state: paused;
 }

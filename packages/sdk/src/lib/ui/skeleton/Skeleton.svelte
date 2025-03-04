@@ -19,10 +19,10 @@
     aria-hidden="true">
     <div class="col-span-3 mb-1.5 h-2.5 rounded-full bg-current"></div>
     <div class="col-span-9 h-2 rounded-full bg-current"></div>
-    <div class="col-span-full h-2 rounded bg-current"></div>
-    <div class="col-span-8 h-2 rounded bg-current"></div>
-    <div class="col-span-7 h-2 rounded bg-current"></div>
-    <div class="col-span-9 h-2 rounded bg-current"></div>
+    <div class="col-span-full h-2 rounded-sm bg-current"></div>
+    <div class="col-span-8 h-2 rounded-sm bg-current"></div>
+    <div class="col-span-7 h-2 rounded-sm bg-current"></div>
+    <div class="col-span-9 h-2 rounded-sm bg-current"></div>
     <span class="sr-only">...loading...</span>
   </div>
 {/if}

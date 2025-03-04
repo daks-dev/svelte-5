@@ -17,7 +17,7 @@
 {#if visible}
   <div
     role="status"
-    class={twMerge('space-y-2.5 rounded border border-current p-5 shadow', animate, className)}
+    class={twMerge('space-y-2.5 rounded-sm border border-current p-5 shadow', animate, className)}
     aria-hidden="true">
     <slot />
     <div

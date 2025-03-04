@@ -21,4 +21,4 @@ export default async function () {
     await access(file, async () => await writeFile(file, '[]', 'w+'));
     console.debug('SSR iconify');
   } else new DOMException('Alias $iconify missing', 'Svelte Config');
-}
+};

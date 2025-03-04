@@ -1,42 +1,62 @@
-import { fileURLToPath } from 'node:url';
-import { includeIgnoreFile } from '@eslint/compat';
-import ts from 'typescript-eslint';
+
 import js from '@eslint/js';
-import globals from 'globals';
+import ts from 'typescript-eslint';
+
 import prettier from 'eslint-config-prettier';
 import svelte from 'eslint-plugin-svelte';
-import tailwindcss from 'eslint-plugin-tailwindcss';
-import svelteConfig from './svelte.config.js';
+// import tailwind from 'eslint-plugin-tailwindcss';
 
-const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
+// import svelteConfig from './svelte.config.js';
 
-export default ts.config(
-  includeIgnoreFile(gitignorePath),
+export default [
   js.configs.recommended,
   ...ts.configs.recommended,
   ...svelte.configs.recommended,
-  ...tailwindcss.configs.recommended,
+  // tailwind.configs.recommended,
   prettier,
-  ...svelte.configs['flat/prettier'],
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node
-      }
-    }
-  },
   {
     files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
     ignores: ['eslint.config.js', 'svelte.config.js'],
-
     languageOptions: {
       parserOptions: {
         projectService: true,
         extraFileExtensions: ['.svelte'],
-        parser: ts.parser,
-        svelteConfig
+        parser: ts.parser
+        // svelteConfig
       }
+    },
+    rules: {
+      'no-undef': 'off',
+      'svelte/no-at-html-tags': 'off',
+      'svelte/require-each-key': 'off'
     }
+  },
+  {
+    rules: {
+      '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { 'args': 'after-used', 'argsIgnorePattern': '^_' }
+      ]
+      // 'tailwindcss/no-custom-classname': 'off',
+      /*'tailwindcss/classnames-order': [
+        'warn',
+        {
+          'callees': ['twMerge', 'twJoin', 'classnames', 'clsx', 'ctl']
+        }
+      ]*/
+    },
+  },
+  {
+    ignores: [
+      '**/.svelte-kit/',
+      '**/build/',
+      '**/dist/',
+      '**/dist-ssr/',
+      '**/static',
+      '**/test-results/',
+      '**/.master/',
+      '**/.vscode/'
+    ]
   }
-);
+];

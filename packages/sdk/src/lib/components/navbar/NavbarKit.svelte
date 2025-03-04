@@ -13,7 +13,7 @@
   let className: ClassName = `
     bg-neutral-50 dark:bg-gray-800
     onscroll:bg-neutral-50/95 dark:onscroll:bg-slate-700/95
-    shadow-sm dark:shadow-md onscroll:shadow-lg`;
+    shadow-xs dark:shadow-md onscroll:shadow-lg`;
   export { className as class };
 
   export let custom: Partial<Custom> = {};

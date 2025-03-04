@@ -26,7 +26,7 @@
     <div
       class="
         relative flex
-        h-48 max-h-full w-full items-center justify-center overflow-hidden rounded before:absolute
+        h-48 max-h-full w-full items-center justify-center overflow-hidden rounded-sm before:absolute
         before:inset-0 before:bg-current before:opacity-25 sm:w-96">
       <svg
         width={size}
@@ -39,11 +39,11 @@
     </div>
     <div class="grid w-full grid-cols-10 gap-y-2.5">
       <div class="col-span-3 mb-1.5 h-2.5 rounded-full bg-current"></div>
-      <div class="col-span-8 h-2 rounded bg-current"></div>
-      <div class="col-span-full h-2 rounded bg-current"></div>
-      <div class="col-span-6 h-2 rounded bg-current"></div>
-      <div class="col-span-7 h-2 rounded bg-current"></div>
-      <div class="col-span-5 h-2 rounded bg-current"></div>
+      <div class="col-span-8 h-2 rounded-sm bg-current"></div>
+      <div class="col-span-full h-2 rounded-sm bg-current"></div>
+      <div class="col-span-6 h-2 rounded-sm bg-current"></div>
+      <div class="col-span-7 h-2 rounded-sm bg-current"></div>
+      <div class="col-span-5 h-2 rounded-sm bg-current"></div>
     </div>
     <span class="sr-only">...loading...</span>
   </div>

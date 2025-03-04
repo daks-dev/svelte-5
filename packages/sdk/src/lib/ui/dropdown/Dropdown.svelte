@@ -10,7 +10,7 @@
 
   export let classWrapper: ClassName = undefined;
   let classLink: ClassName =
-    'py-2 px-4 bg-inherit hover:bg-gray-400/25 rounded border border-gray-500/50';
+    'py-2 px-4 bg-inherit hover:bg-gray-400/25 rounded-sm border border-gray-500/50';
   export { classLink as class };
 
   export let label: string | undefined = undefined;

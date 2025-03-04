@@ -35,7 +35,7 @@
       origin-top-left
       divide-y divide-neutral-200/95
       rounded-md bg-neutral-50/95 text-base shadow-lg
-      shadow-gray-600 focus:outline-none
+      shadow-gray-600 focus:outline-hidden
       sm:max-w-sm md:max-w-md dark:divide-slate-600/95
       dark:bg-slate-700/95"
     classLink={twMerge(

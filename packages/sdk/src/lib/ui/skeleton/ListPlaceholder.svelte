@@ -16,7 +16,7 @@
   <div
     role="status"
     class={twMerge(
-      'space-y-4 rounded p-5',
+      'space-y-4 rounded-sm p-5',
       'divide-y divide-current border border-current shadow',
       animate,
       className
@@ -28,7 +28,7 @@
         aria-rowindex={idx}>
         <div>
           <div class="mb-2.5 h-2.5 w-24 rounded-full bg-current opacity-40"></div>
-          <div class="h-2 w-32 rounded bg-current"></div>
+          <div class="h-2 w-32 rounded-sm bg-current"></div>
         </div>
         <div class="h-2.5 w-12 rounded-full bg-current opacity-70"></div>
       </div>

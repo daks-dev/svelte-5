@@ -77,8 +77,8 @@
       bind:value={text}
       class={twMerge(
         'w-full px-2 py-0.5',
-        'rounded bg-slate-200 text-slate-700',
-        'focus:bg-white focus:outline-none',
+        'rounded-sm bg-slate-200 text-slate-700',
+        'focus:bg-white focus:outline-hidden',
         custom.input
       )}
       class:text-red-800={!validation()}

@@ -15,7 +15,7 @@
 {#if visible}
   <div
     role="status"
-    class={twMerge('rounded border border-current p-5 shadow', animate, className)}
+    class={twMerge('rounded-sm border border-current p-5 shadow', animate, className)}
     aria-hidden="true">
     <div class="mb-2.5 h-2.5 w-32 rounded-full bg-current"></div>
     <div class="mb-10 h-2 w-48 rounded-full bg-current"></div>

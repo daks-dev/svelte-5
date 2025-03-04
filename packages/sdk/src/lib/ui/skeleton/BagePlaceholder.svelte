@@ -27,10 +27,10 @@
         <div class="h-2.5 rounded-full bg-current"></div>
         <div class="space-y-2.5 opacity-50">
           <div class="grid grid-cols-3 gap-x-2 gap-y-2.5">
-            <div class="col-span-2 h-2 rounded bg-current"></div>
-            <div class="col-span-1 h-2 rounded bg-current"></div>
+            <div class="col-span-2 h-2 rounded-sm bg-current"></div>
+            <div class="col-span-1 h-2 rounded-sm bg-current"></div>
           </div>
-          <div class="h-2 rounded bg-current"></div>
+          <div class="h-2 rounded-sm bg-current"></div>
         </div>
       </div>
     </div>

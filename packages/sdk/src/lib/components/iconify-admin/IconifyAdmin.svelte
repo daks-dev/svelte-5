@@ -29,7 +29,7 @@
     <button
       on:click|preventDefault={upload}
       type="button"
-      class="mx-2 rounded border-2 px-3 py-2"
+      class="mx-2 rounded-sm border-2 px-3 py-2"
       disabled={waiting}>
       UPLOAD
     </button>
