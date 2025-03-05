@@ -1,5 +1,0 @@
-@reference '../../tailwind';
-
-a {
-  @apply xs:decoration-0;
-}

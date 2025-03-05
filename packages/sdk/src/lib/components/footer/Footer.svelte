@@ -7,6 +7,7 @@
 
   let className: ClassName = 'bg-neutral-200/50 dark:bg-gray-800';
   export { className as class };
+  export let classFrame: ClassName = 'frame-xl/1';
 
   export let copylink: Partial<NavItem> | undefined = undefined;
   export let links: Partial<NavItem>[] = [];
@@ -21,13 +22,12 @@
 <footer
   id="footer"
   class={twMerge(
-    'py-4',
     'font-mono text-xs leading-none font-thin',
     'text-gray-600 dark:text-gray-400',
     'sm:text-sm sm:tracking-wide',
     className
   )}>
-  <div class="wrapper-xl flex flex-row items-center justify-between">
+  <div class={twMerge('flex flex-row items-center justify-between', classFrame)}>
     {#if copylink}
       <Link
         class="

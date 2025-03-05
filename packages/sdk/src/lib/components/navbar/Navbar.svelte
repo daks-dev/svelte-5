@@ -61,6 +61,7 @@
 <NavbarWrapper
   let:scrolled
   class={className}
+  classFrame={custom.frame}
   {close}
   {disabled}
   {duration}>

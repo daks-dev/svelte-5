@@ -19,6 +19,7 @@
   export let custom: Partial<Custom> = {};
   custom = Object.assign(
     {
+      frme: undefined,
       menu: `
         text-slate-500 dark:text-slate-400 onscroll:text-slate-500
         max-bp:bg-neutral-50/95 max-bp:dark:bg-slate-700/95`,

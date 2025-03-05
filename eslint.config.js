@@ -1,6 +1,7 @@
 
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
+import globals from 'globals';
 
 import prettier from 'eslint-config-prettier';
 import svelte from 'eslint-plugin-svelte';
@@ -14,6 +15,14 @@ export default [
   ...svelte.configs.recommended,
   // tailwind.configs.recommended,
   prettier,
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    }
+  },
   {
     files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
     ignores: ['eslint.config.js', 'svelte.config.js'],

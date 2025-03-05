@@ -4,6 +4,7 @@
 
   let className: ClassName = undefined;
   export { className as class };
+  export let classFrame: ClassName = 'frame-xl/1';
 
   export let close: () => void;
   export let disabled: boolean;
@@ -32,9 +33,7 @@
   style:transition-duration={`${duration}ms`}>
   <div
     use:outside={close}
-    class="
-      wrapper-xl relative flex flex-wrap items-center
-      justify-end">
+    class={twMerge('relative flex flex-wrap items-center justify-end', classFrame)}>
     <slot {scrolled} />
   </div>
 </div>

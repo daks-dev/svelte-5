@@ -19,15 +19,35 @@
   all: revert;
 }
 
+@utility inherit {
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-indent: inherit;
+  text-shadow: inherit;
+  text-transform: inherit;
+  word-spacing: inherit;
+}
+
+@utility enabled {
+  pointer-events: auto;
+  touch-action: auto;
+  user-select: auto;
+}
 @utility disabled {
   pointer-events: none;
   touch-action: none;
   user-select: none;
 }
-@utility enabled {
-  pointer-events: auto;
-  touch-action: auto;
-  user-select: auto;
+
+@utility text-shadow {
+  text-shadow: 1px 1px 2px var(--color-gray-700);
+}
+@utility text-shadow-none {
+  text-shadow: none;
+}
+@utility text-shadow-* {
+  text-shadow: calc(1px * --value(integer)) calc(1px * --value(integer))
+    calc(1.5px * --value(integer)) var(--tw-shadow-color, var(--color-gray-700));
 }
 
 @utility bg-only {
@@ -40,7 +60,6 @@
     display: none;
   }
 }
-
 @utility bg-* {
   background-size: --value(percentage);
 }

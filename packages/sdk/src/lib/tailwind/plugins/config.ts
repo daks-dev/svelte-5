@@ -31,12 +31,6 @@ export default plugin(() => {}, {
         circle: 'circle',
         square: 'square'
       },
-      aspectRatio: {
-        '3/4': '3 / 4',
-        '4/3': '4 / 3',
-        A4: '620 / 877',
-        A4l: '877 / 620'
-      },
       gradientColorStopPositions: {
         '150%': '150%'
       },

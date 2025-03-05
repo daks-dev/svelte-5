@@ -1,4 +1,4 @@
-export type Custom = Record<'menu' | 'link' | 'button' | 'icon', ClassName>;
+export type Custom = Record<'frame' | 'menu' | 'link' | 'button' | 'icon', ClassName>;
 
 export { default as Navbar } from './Navbar.svelte';
 export { default as NavbarKit } from './NavbarKit.svelte';
