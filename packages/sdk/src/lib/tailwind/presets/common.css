@@ -14,8 +14,8 @@
 
   --inset-shadow-var: inset 0 0 0 1px var(--tw-shadow-color);
 
-  --drop-shadow-deep: [ '0 4px 3px rgb(0 0 0 / 0.4)', '0 2px 2px rgb(0 0 0 / 0.2)'];
-  --drop-shadow-hard: [ '0 4px 3px rgb(0 0 0 / 0.7)', '0 2px 2px rgb(0 0 0 / 0.4)'];
+  --drop-shadow-deep: 0 5px 3px rgb(0 0 0 / 0.5);
+  --drop-shadow-hard: 0 5px 3px rgb(0 0 0 / 0.8);
 }
 
 @import '../css/base.css';

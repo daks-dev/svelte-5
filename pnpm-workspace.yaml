@@ -1,7 +1,7 @@
 packages:
   - 'packages/sdk'
   #- 'sites/demo'
-  #- 'sites/gkcck'
+  - 'sites/gkcck'
   - 'sites/nic'
   - 'sites/skm'
   #- 'sites/su363'
