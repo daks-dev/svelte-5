@@ -33,7 +33,6 @@
     disallow
   });
   item.pointer = pointer;
-
   $: item.pathname = $page.url.pathname;
 </script>
 

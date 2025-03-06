@@ -12,7 +12,6 @@
 
   let scrollY: number = 0;
   let navbar: HTMLElement;
-
   $: scrolled = scrollY > navbar?.clientHeight;
 </script>
 

@@ -24,14 +24,13 @@
   export let duration = 300;
 
   let innerWidth: number = 0;
-  let hidden = true;
   const breakpoint = Number(process.env.PUBLIC_BREAKPOINT);
   $: hidden = innerWidth < (isNaN(breakpoint) ? 800 : breakpoint);
 
   const close = () => (hidden = true);
   const toggle = () => (hidden = !hidden);
 
-  let disabled = false;
+  $: disabled = false;
 
   function handleKey(ev: KeyboardEvent): void {
     if (ev.key === 'Escape' && !hidden) {
