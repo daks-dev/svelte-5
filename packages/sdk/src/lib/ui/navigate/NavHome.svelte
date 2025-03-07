@@ -13,10 +13,10 @@
 </script>
 
 <Link
-  class={twMerge(className, brand.custom?.link)}
+  class={twMerge(className, custom.link)}
   href="/"
   aria-label={label}>
-  <span class="sr-only">{@html brand.label}</span>
+  <span class="sr-only">{@html label}</span>
   {#if page.url.pathname === '/'}
     {#if home}
       {#if isIcon(home)}
@@ -38,14 +38,14 @@
   {:else if inner}
     {#if isIcon(inner)}
       <Icon
-        class={twMerge('pointer-events-none', custom.page)}
+        class={twMerge('pointer-events-none', custom.inner)}
         icon={inner}
         {size}>
         {alt}
       </Icon>
     {:else}
       <img
-        class={twMerge('pointer-events-none', custom.page)}
+        class={twMerge('pointer-events-none', custom.inner)}
         src={inner}
         width={size}
         height={size}

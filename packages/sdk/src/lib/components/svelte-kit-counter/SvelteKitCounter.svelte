@@ -2,7 +2,7 @@
   import { BROWSER } from 'esm-env';
   import { onMount } from 'svelte';
   import { sineIn } from 'svelte/easing';
-  import { Spring } from 'svelte/motion';
+  import { spring } from 'svelte/motion';
   import { blur } from 'svelte/transition';
   import Icon from '../../app/iconify/Icon.svelte';
   import placeholder from '../../assets/images/placeholder.js';
@@ -17,7 +17,8 @@
   const increment = () => count.update((value) => ++value);
   const decrement = () => count.update((value) => --value);
 
-  const displayed_count = new Spring(0);
+  // TODO:
+  const displayed_count = spring();
   $: displayed_count.set($count);
   const modulo = (n: number, m: number) => ((n % m) + m) % m;
   $: offset = modulo($displayed_count, 1);
