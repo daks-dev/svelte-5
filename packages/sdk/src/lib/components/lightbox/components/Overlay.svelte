@@ -83,7 +83,7 @@
   <div
     on:click|preventDefault|stopPropagation={() => false}
     on:keypress
-    class={twMerge('flex max-h-[inherit] flex-col', fullscreen && 'h-[inherit] w-[inherit]')}
+    class={twMerge('max-h-inherit flex flex-col', fullscreen && 'h-inherit w-inherit')}
     role="button"
     tabindex="-1">
     <slot />

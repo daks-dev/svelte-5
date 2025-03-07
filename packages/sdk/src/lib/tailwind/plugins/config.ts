@@ -12,7 +12,7 @@ const f = (x: number, d = 0.25) => [
   }
 ];
 
-export default plugin(() => {}, {
+export default plugin(() => { }, {
   theme: {
     extend: {
       spacing: {
@@ -33,10 +33,6 @@ export default plugin(() => {}, {
       },
       gradientColorStopPositions: {
         '150%': '150%'
-      },
-      backgroundImage: {
-        loading: 'url(@daks.dev/svelte.sdk/icons/spinners/90-ring-bg.svg)',
-        waiting: 'url(@daks.dev/svelte.sdk/icons/spinners/clock.svg)'
       }
     }
   }

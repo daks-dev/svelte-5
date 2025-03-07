@@ -27,7 +27,7 @@
   <img
     on:load={handleLoad}
     class={twMerge(
-      !native && 'bg-loading bg-20% bg-center bg-no-repeat',
+      !native && 'bg--loading bg-20% bg-center bg-no-repeat',
       'bg-neutral-300',
       custom.image
     )}

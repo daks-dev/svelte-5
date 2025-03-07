@@ -31,7 +31,7 @@
       buttonFullscreen: true,
       enableKeyboard: true,
       bodyScroll: false,
-      duration: 300
+      duration: 200
     },
     options,
     {

@@ -68,7 +68,7 @@
               scale && 'hover:scale-105',
               grayscale && 'grayscale hover:grayscale-0',
               invert && 'invert hover:invert-0',
-              (shadow || scale || grayscale || invert) && 'transition duration-500 ease-in-out',
+              (shadow || scale || grayscale || invert) && 'transition duration-300 ease-in-out',
               custom.inner?.image
             ),
             caption: twMerge(
@@ -94,7 +94,7 @@
       {subtitle}
       {description}>
       <img
-        class="bg-1/10 bg-loading bg-center bg-no-repeat"
+        class="bg-10% bg--loading bg-center bg-no-repeat"
         {src}
         {width}
         {height}

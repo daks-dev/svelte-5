@@ -7,10 +7,10 @@
 
 /* components/Body.svelte */
 :is(.lightbox-body.fullscreen) {
-  @apply h-[inherit] max-h-[inherit] w-[inherit] items-center justify-center;
+  @apply h-inherit max-h-inherit w-inherit items-center justify-center;
 }
 :where(.lightbox-body) > * {
-  @apply h-[inherit] max-h-[inherit];
+  @apply h-inherit max-h-inherit;
 }
 :where(.lightbox-body) > img {
   @apply pointer-events-none mx-auto object-contain;

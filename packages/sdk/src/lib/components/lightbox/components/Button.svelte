@@ -32,7 +32,7 @@
     class={twMerge(
       'disabled',
       'w-16 p-2 hover:scale-125',
-      'transition-all duration-300 ease-in',
+      'transition-all duration-200 ease-in',
       next ? 'mr-2' : 'rotate-180'
     )}
     xmlns="http://www.w3.org/2000/svg"

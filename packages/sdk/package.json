@@ -46,8 +46,8 @@
     "vitest": "^3.0.8"
   },
   "peerDependencies": {
-    "@sveltejs/kit": "^2.18.0",
-    "svelte": "^5.22.5",
+    "@sveltejs/kit": "^2.19.0",
+    "svelte": "^5.22.6",
     "tailwindcss": "^4.0.12"
   },
   "exports": {

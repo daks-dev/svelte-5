@@ -50,6 +50,9 @@
     calc(1.5px * --value(integer)) var(--tw-shadow-color, var(--color-gray-700));
 }
 
+@utility bg-* {
+  background-size: --value(percentage);
+}
 @utility bg-only {
   display: inline-block;
   overflow: hidden;
@@ -60,8 +63,11 @@
     display: none;
   }
 }
-@utility bg-* {
-  background-size: --value(percentage);
+@utility bg--loading {
+  background-image: url(@daks.dev/svelte.sdk/icons/spinners/90-ring-bg.svg);
+}
+@utility bg--waiting {
+  background-image: url(@daks.dev/svelte.sdk/icons/spinners/clock.svg);
 }
 
 @utility content-empty {

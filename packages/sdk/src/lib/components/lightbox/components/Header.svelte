@@ -26,7 +26,7 @@
       on:click={() => dispatch('fullscreen')}
       class={twMerge(
         'py-1.5',
-        'transition-all duration-300',
+        'transition-all duration-200',
         'ease-in hover:scale-125 hover:cursor-pointer',
         'hover:text-white',
         fullscreen && ['shadow-lg', !options.buttonClose && 'pr-2']
@@ -52,7 +52,7 @@
       on:click={() => dispatch('close')}
       class={twMerge(
         'py-1.5',
-        'transition-all duration-300 ease-in',
+        'transition-all duration-200 ease-in',
         'hover:scale-125 hover:cursor-pointer hover:text-white',
         fullscreen && 'pr-2 shadow-lg'
       )}
