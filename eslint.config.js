@@ -1,4 +1,3 @@
-
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
 import globals from 'globals';
@@ -45,7 +44,7 @@ export default [
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
-        { 'args': 'after-used', 'argsIgnorePattern': '^_' }
+        { args: 'after-used', argsIgnorePattern: '^_' }
       ]
       // 'tailwindcss/no-custom-classname': 'off',
       /*'tailwindcss/classnames-order': [
@@ -54,7 +53,7 @@ export default [
           'callees': ['twMerge', 'twJoin', 'classnames', 'clsx', 'ctl']
         }
       ]*/
-    },
+    }
   },
   {
     ignores: [

@@ -4,6 +4,38 @@
   import { IconTest } from '../../app/iconify/index.js';
   import Nav from './Nav.js';
 
+  /*
+  import type { HTMLAnchorAttributes } from 'svelte/elements';
+
+  type Props = Omit<HTMLAnchorAttributes, 'class'> & {
+    class?: ClassName;
+    base?: string;
+    target?: string;
+    disallow?: boolean;
+    label?: string;
+    icon?: string;
+    size?: number | string;
+    pointer?: boolean;
+  };
+
+  let {
+    children,
+    class: className,
+    href,
+    base,
+    target,
+    rel,
+    role,
+    itemprop,
+    disallow,
+    label,
+    icon,
+    size,
+    pointer = false,
+    ...rest
+  }: Props = $props();
+  */
+
   let className: ClassName = undefined;
   export { className as class };
 
@@ -36,10 +68,17 @@
     disallow
   });
   item.pointer = pointer;
+
+  /*
+  const pathname = $state(page.url.pathname);
+  item.pathname = pathname;
+  */
+
   $: item.pathname = $page.url.pathname;
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore event_directive_deprecated -->
+<!-- svelte-ignore slot_element_deprecated -->
 <svelte:element
   this={item.tag}
   on:click
