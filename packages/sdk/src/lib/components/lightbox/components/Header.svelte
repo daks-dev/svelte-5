@@ -24,13 +24,13 @@
   {#if options.buttonFullscreen}
     <button
       on:click={() => dispatch('fullscreen')}
-      class="
-        py-1.5
-        transition-all duration-300
-        ease-in hover:scale-125 hover:cursor-pointer
-        hover:text-white"
-      class:shadow-lg={fullscreen}
-      class:pr-2={fullscreen && !options.buttonClose}
+      class={twMerge(
+        'py-1.5',
+        'transition-all duration-300',
+        'ease-in hover:scale-125 hover:cursor-pointer',
+        'hover:text-white',
+        fullscreen && ['shadow-lg', !options.buttonClose && 'pr-2']
+      )}
       aria-label="full screen">
       <svg
         class="disabled w-9"
@@ -50,12 +50,12 @@
   {#if options.buttonClose}
     <button
       on:click={() => dispatch('close')}
-      class="
-        py-1.5
-        transition-all duration-300 ease-in
-        hover:scale-125 hover:cursor-pointer hover:text-white"
-      class:shadow-lg={fullscreen}
-      class:pr-2={fullscreen}
+      class={twMerge(
+        'py-1.5',
+        'transition-all duration-300 ease-in',
+        'hover:scale-125 hover:cursor-pointer hover:text-white',
+        fullscreen && 'pr-2 shadow-lg'
+      )}
       aria-label="close">
       <svg
         class="disabled w-9"

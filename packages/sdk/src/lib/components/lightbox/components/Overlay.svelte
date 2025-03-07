@@ -75,9 +75,9 @@
     'linecap-round linejoin-round vector-non-scaling-stroke',
     'clear-pseudo select-none',
     'overflow-y-offset',
+    options.clickableClose && 'hover:cursor-zoom-out',
     custom.overlay
   )}
-  class:hover:cursor-zoom-out={options.clickableClose}
   role="button"
   tabindex="-1">
   <div

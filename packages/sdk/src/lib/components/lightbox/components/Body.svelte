@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { twMerge } from 'tailwind-merge';
   import { blur } from 'svelte/transition';
   import type { Options } from '../index.d.ts';
 
@@ -12,12 +13,13 @@
 <div
   in:blur={{ duration: options.duration, delay }}
   out:blur={{ duration: delay }}
-  class="
-    lightbox-body
-    relative z-10 flex cursor-default overflow-hidden"
+  class={twMerge(
+    'lightbox-body',
+    'relative z-10 flex overflow-hidden',
+    scrollable && 'overflow-y-auto',
+    options.swipe ? 'cursor-ew-resize' : 'cursor-default'
+  )}
   class:fullscreen
-  class:scrollable
-  class:overflow-y-auto={scrollable}
-  class:cursor-ew-resize={options.swipe}>
+  class:scrollable>
   <slot />
 </div>

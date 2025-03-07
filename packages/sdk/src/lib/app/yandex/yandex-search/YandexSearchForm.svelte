@@ -1,11 +1,10 @@
 <script lang="ts">
+  import { twMerge } from 'tailwind-merge';
   import { onMount } from 'svelte';
-  // TODO:
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import Icon from '../../iconify/Icon.svelte';
   import { beep } from '../../../utils/audio.js';
-  import { twMerge } from 'tailwind-merge';
 
   let className: ClassName = undefined;
   export { className as class };
@@ -56,8 +55,11 @@
   bind:this={form}
   on:submit={handleSubmit}
   id="ya-site-form"
-  class={twMerge('flex flex-row items-start justify-between gap-3', className)}
-  class:flex-row-reverse={button && reverse}
+  class={twMerge(
+    'flex flex-row items-start justify-between gap-3',
+    button && reverse && 'flex-row-reverse',
+    className
+  )}
   action="/search"
   method="get">
   <input
@@ -77,21 +79,21 @@
       bind:value={text}
       class={twMerge(
         'w-full px-2 py-0.5',
-        'rounded-sm bg-slate-200 text-slate-700',
+        validation() ? 'text-slate-700' : 'text-red-800',
+        'rounded-sm bg-slate-200',
         'focus:bg-white focus:outline-hidden',
         custom.input
       )}
-      class:text-red-800={!validation()}
       type="search"
       name="text" />
     <div
       class={twMerge(
         'absolute px-2 py-0.5',
+        reverse && 'right-0',
         text ? 'bottom-full' : 'bottom-0 opacity-80',
         'font-semibold text-gray-500 first-letter:text-red-700',
         'transition-all duration-500 ease-in-out'
-      )}
-      class:right-0={reverse}>
+      )}>
       Яндекс
     </div>
     {#if callback}
@@ -101,13 +103,13 @@
         role="button"
         tabindex="-1"
         class={twMerge(
-          'absolute right-0 px-2 py-0.5',
+          'absolute px-2 py-0.5',
+          !reverse && 'right-0',
           text ? 'bottom-full bg-transparent' : 'bottom-0 bg-gray-400 opacity-80',
           'font-semibold text-gray-500 hover:text-red-800',
           'cursor-pointer',
           'transition-all duration-500 ease-in-out'
-        )}
-        class:right-auto={reverse}>
+        )}>
         Esc
       </div>
     {/if}

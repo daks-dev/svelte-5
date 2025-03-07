@@ -12,11 +12,10 @@
   on:click
   class={twMerge(
     'absolute inset-y-0 hidden w-20 items-center justify-center lg:flex',
-    flip ? 'left-0 pl-4' : 'right-0 pl-4',
+    flip ? 'left-0 -scale-x-100 pl-4' : 'right-0 pl-4',
     'text-5xl',
     className
   )}
-  class:-scale-x-100={flip}
   {disabled}
   type="button"
   tabindex="-1"

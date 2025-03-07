@@ -1,11 +1,11 @@
 <script lang="ts">
+  import { twMerge } from 'tailwind-merge';
   import { onMount } from 'svelte';
   import { tweened } from 'svelte/motion';
   import { linear, quadInOut } from 'svelte/easing';
   import Figure from '../../ui/figure/Figure.svelte';
   import lazyload from '../../app/lazyload.js';
   import { swipe, wheel } from '../../utils/index.js';
-  import { twMerge } from 'tailwind-merge';
   import ButtonMove from './components/ButtonMove.svelte';
   import ButtonPlay from './components/ButtonPlay.svelte';
   import type { LazyLoad } from '../../app/lazyload.js';
@@ -165,11 +165,12 @@
       )}>
       <div
         bind:this={slider}
-        class="
-          relative
-          grid grid-flow-col grid-rows-1
-          will-change-transform"
-        class:overflow-x-hidden={ratio}
+        class={twMerge(
+          'relative',
+          'grid grid-flow-col grid-rows-1',
+          ratio && 'overflow-x-hidden',
+          'will-change-transform'
+        )}
         style:height={ratio ? `${width / ratio}px` : ''}
         style:width="{width * total}px"
         style:transform="translate3d(-{width * $tween}px, 0px, 0px)">

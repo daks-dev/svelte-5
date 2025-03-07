@@ -1,8 +1,11 @@
 <script lang="ts">
-  // TODO:
+  import { twMerge } from 'tailwind-merge';
   import { page } from '$app/stores';
   import { IconTest } from '../../app/iconify/index.js';
   import Nav from './Nav.js';
+
+  let className: ClassName = undefined;
+  export { className as class };
 
   export let label: string | undefined = undefined;
   export let icon: string | undefined = undefined;
@@ -42,9 +45,12 @@
   on:click
   on:dblclick
   on:keydown
-  class:select-none={true}
-  class:inherit={item.tag === 'button'}
-  class:disabled={item.active && !item.pointer}
+  class={twMerge(
+    'select-none',
+    item.tag === 'button' && 'inherit',
+    item.active && !item.pointer && 'disabled',
+    className
+  )}
   {...item.props}
   aria-label={icon || $$slots.default ? label : undefined}
   {...$$restProps}>

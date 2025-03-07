@@ -17,8 +17,8 @@
   class:fullscreen>
   <div
     class={twMerge(
-      'min-h-[3rem] p-2',
-      'grid grid-cols-2 items-center gap-1',
+      'min-h-24 sm:min-h-12',
+      'grid grid-cols-2 items-center gap-2',
       'text-white/50 hover:text-white',
       'cursor-default',
       custom.inner?.cuption
@@ -30,8 +30,7 @@
     {/if}
     {#if status}
       <div
-        class={twMerge('font-mono whitespace-nowrap', custom.inner?.status)}
-        class:text-right={title}>
+        class={twMerge('font-mono whitespace-nowrap', title && 'text-right', custom.inner?.status)}>
         {status.activeItem + 1} <sup>[{status.countItems}]</sup>
       </div>
     {/if}

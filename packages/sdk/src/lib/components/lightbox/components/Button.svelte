@@ -17,15 +17,16 @@
   on:click|preventDefault|stopPropagation
   {disabled}
   class={twMerge(
+    'hidden',
     'absolute inset-y-0 z-20',
-    'hidden items-center',
+    next ? 'right-0 justify-end' : 'left-0 justify-start',
     'w-1/5 md:w-1/6 xl:w-1/12',
+    (!disabled || options.behaviour !== 'hide') && 'xs:flex',
+    'items-center',
     'text-gray-200/50 hover:text-white disabled:text-black',
     'hover:bg-black/50 active:bg-transparent lg:bg-black/25',
-    'hover:cursor-pointer',
-    next ? 'right-0 justify-end' : 'left-0 justify-start'
+    'hover:cursor-pointer'
   )}
-  class:xs:flex={!disabled || options.behaviour !== 'hide'}
   aria-label={next ? 'next' : 'prev'}>
   <svg
     class={twMerge(

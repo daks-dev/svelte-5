@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Icon from '../../../app/iconify/Icon.svelte';
   import { twMerge } from 'tailwind-merge';
+  import Icon from '../../../app/iconify/Icon.svelte';
 
   let className: ClassName = undefined;
   export { className as class };
@@ -9,9 +9,6 @@
   export let size: number | string = '1.25em';
 </script>
 
-<!-- FIXME: -->
-<!-- tailwind error -->
-<!-- class:invisible={!disabled} -->
 <div
   class={twMerge(className, !disabled && 'invisible')}
   aria-label="waiting">

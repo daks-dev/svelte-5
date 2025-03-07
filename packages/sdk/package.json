@@ -1,6 +1,6 @@
 {
   "name": "@daks.dev/svelte.sdk",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "DAKS.DEV Svelte SDK",
   "scripts": {
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -47,8 +47,8 @@
   },
   "peerDependencies": {
     "@sveltejs/kit": "^2.18.0",
-    "svelte": "^5.22.4",
-    "tailwindcss": "^4.0.10"
+    "svelte": "^5.22.5",
+    "tailwindcss": "^4.0.11"
   },
   "exports": {
     "./package.json": "./package.json",

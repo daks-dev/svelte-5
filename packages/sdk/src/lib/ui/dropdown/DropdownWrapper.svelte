@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { NavItem } from '../navigate/index.d.ts';
-  import Link from '../navigate/Link.svelte';
   import { twMerge } from 'tailwind-merge';
+  import Link from '../navigate/Link.svelte';
+  import type { NavItem } from '../navigate/index.d.ts';
 
   let classWrapper: ClassName = 'z-10 bg-neutral-50/95 dark:bg-slate-700/95 rounded-md shadow-md';
   export { classWrapper as class };
@@ -23,12 +23,12 @@
   role="menu"
   class={twMerge(
     'absolute flex w-max min-w-full flex-col overflow-hidden',
+    origin.includes('top') && 'top-full',
+    origin.includes('bottom') && 'bottom-full',
     'aria-hidden:disabled aria-hidden:scale-75 aria-hidden:opacity-0',
     'transition-all ease-in-out',
     classWrapper
   )}
-  class:top-full={origin.includes('top')}
-  class:bottom-full={origin.includes('bottom')}
   style:transition-duration={`${duration}ms`}
   aria-orientation="vertical"
   aria-hidden={hidden}>
