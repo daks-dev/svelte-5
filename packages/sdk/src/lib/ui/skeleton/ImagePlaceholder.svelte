@@ -1,28 +1,35 @@
 <script lang="ts">
   import { BROWSER } from 'esm-env';
-  import { onMount } from 'svelte';
   import { twMerge } from 'tailwind-merge';
+  import { onMount } from 'svelte';
 
-  let className: ClassName = undefined;
-  export { className as class };
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
+    class?: ClassName;
+    animate?: string;
+    size?: number | string;
+  };
+  const {
+    class: className,
+    'aria-hidden': ariaHidden = true,
+    animate = 'animate-pulse hover:animation-paused',
+    size = 48,
+    ...rest
+  }: Props = $props();
 
-  export let animate = 'animate-pulse hover:animation-paused';
-
-  export let size = '48';
-
-  let visible = false;
+  let visible = $state(false);
   onMount(() => (visible = BROWSER));
 </script>
 
 {#if visible}
   <div
-    role="status"
     class={twMerge(
       'space-y-8 md:flex md:items-center md:space-y-0 md:space-x-8',
       animate,
       className
     )}
-    aria-hidden="true">
+    aria-hidden={ariaHidden}
+    {...rest}>
     <div
       class="
         relative flex

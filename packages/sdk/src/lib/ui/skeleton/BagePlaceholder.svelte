@@ -1,14 +1,22 @@
 <script lang="ts">
   import { BROWSER } from 'esm-env';
-  import { onMount } from 'svelte';
   import { twMerge } from 'tailwind-merge';
+  import { onMount } from 'svelte';
 
-  let className: ClassName = 'max-w-sm';
-  export { className as class };
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
+    class?: ClassName;
+    animate?: string;
+  };
+  const {
+    children,
+    class: className = 'max-w-sm',
+    'aria-hidden': ariaHidden = true,
+    animate = 'animate-pulse hover:animation-paused',
+    ...rest
+  }: Props = $props();
 
-  export let animate = 'animate-pulse hover:animation-paused';
-
-  let visible = false;
+  let visible = $state(false);
   onMount(() => (visible = BROWSER));
 </script>
 
@@ -19,8 +27,10 @@
       'divide-y divide-current border border-current',
       animate,
       className
-    )}>
-    <slot />
+    )}
+    aria-hidden={ariaHidden}
+    {...rest}>
+    {@render children?.()}
     <div class="flex space-x-4">
       <div class="h-10 w-10 rounded-full bg-current"></div>
       <div class="flex-1 space-y-5">

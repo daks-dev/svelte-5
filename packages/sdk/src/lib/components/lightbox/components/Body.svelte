@@ -1,13 +1,14 @@
 <script lang="ts">
   import { twMerge } from 'tailwind-merge';
   import { blur } from 'svelte/transition';
-  import type { Options } from '../index.d.ts';
+  import type { Options, Status } from '../index.d.ts';
 
   export let fullscreen: boolean;
   export let scrollable: boolean;
   export let options: Partial<Options>;
+  export let status: Status = undefined;
 
-  const delay = 300;
+  const delay = 200;
 </script>
 
 <div
@@ -17,7 +18,7 @@
     'lightbox-body',
     'relative z-10 flex overflow-hidden',
     scrollable && 'overflow-y-auto',
-    options.swipe ? 'cursor-ew-resize' : 'cursor-default'
+    options.swipe && status && status.countItems > 1 ? 'cursor-ew-resize' : 'cursor-default'
   )}
   class:fullscreen
   class:scrollable>

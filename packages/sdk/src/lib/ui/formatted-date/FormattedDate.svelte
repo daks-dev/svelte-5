@@ -6,7 +6,6 @@
   import { twMerge } from 'tailwind-merge';
 
   import type { HTMLTimeAttributes } from 'svelte/elements';
-
   type Props = Omit<HTMLTimeAttributes, 'class'> & {
     class?: ClassName;
     parse: string;
@@ -16,7 +15,6 @@
     month?: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow';
     day?: 'numeric' | '2-digit';
   };
-
   const {
     class: className,
     date: d,

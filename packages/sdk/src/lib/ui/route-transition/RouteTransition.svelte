@@ -1,12 +1,11 @@
 <script lang="ts">
+  import { twMerge } from 'tailwind-merge';
   import { blur, fly } from 'svelte/transition';
   import { sineIn, sineOut } from 'svelte/easing';
-  import { navigating } from '$app/stores';
-  import { twMerge } from 'tailwind-merge';
+  import { navigating } from '$app/state';
   import { routeTransitionMode } from '$lib/stores/index.js';
 
   import type { SvelteHTMLElements } from 'svelte/elements';
-
   type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
     refresh: string;
     class?: ClassName;
@@ -16,7 +15,6 @@
     duration?: number;
     delay?: number;
   };
-
   const {
     children,
     refresh,
@@ -34,7 +32,7 @@
 
   const transition = $routeTransitionMode ? fly : blur;
   const options = () => {
-    if (!roots.includes($navigating?.to?.url.pathname ?? ''))
+    if (!roots.includes(navigating?.to?.url.pathname ?? ''))
       switch ($routeTransitionMode) {
         case 3:
           return {

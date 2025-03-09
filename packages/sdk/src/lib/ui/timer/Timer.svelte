@@ -2,10 +2,15 @@
   import { twMerge } from 'tailwind-merge';
   import { timer, timerFormat as format } from '../../stores/persistent.js';
 
-  let className: ClassName = undefined;
-  export { className as class };
+  import type { HTMLTimeAttributes } from 'svelte/elements';
+  type Props = Omit<HTMLTimeAttributes, 'class'> & {
+    class?: ClassName;
+  };
+  const { class: className, ...rest }: Props = $props();
 </script>
 
-<time class={twMerge(className)}>
+<time
+  class={twMerge(className)}
+  {...rest}>
   {format($timer)}
 </time>

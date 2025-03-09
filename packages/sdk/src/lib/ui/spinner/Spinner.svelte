@@ -1,18 +1,29 @@
 <script lang="ts">
   import { twMerge } from 'tailwind-merge';
 
-  let className: ClassName = undefined;
-  export { className as class };
-
-  export let size = '1em';
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['svg'], 'class'> & {
+    class?: ClassName;
+    size?: number | string;
+  };
+  const {
+    class: className,
+    width: w,
+    height: h,
+    viewBox = '0 0 24 24',
+    size = '1em',
+    ...rest
+  }: Props = $props();
+  const width = w ?? size;
+  const height = h ?? size;
 </script>
 
 <svg
   class={twMerge(className)}
-  width={size}
-  height={size}
-  viewBox="0 0 24 24"
-  role="status">
+  {width}
+  {height}
+  {viewBox}
+  {...rest}>
   <g
     fill="none"
     stroke="currentColor"

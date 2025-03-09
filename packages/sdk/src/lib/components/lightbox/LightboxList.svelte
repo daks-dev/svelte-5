@@ -152,7 +152,8 @@
       <Body
         {fullscreen}
         {scrollable}
-        {options}>
+        {options}
+        {status}>
         <slot />
       </Body>
     </Controller>

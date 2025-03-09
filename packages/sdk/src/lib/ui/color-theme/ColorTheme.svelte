@@ -2,14 +2,13 @@
   import { twMerge } from 'tailwind-merge';
   import { onMount } from 'svelte';
   import Icon from '../../app/iconify/Icon.svelte';
-  import type { HTMLButtonAttributes } from 'svelte/elements';
 
+  import type { HTMLButtonAttributes } from 'svelte/elements';
   type Props = Omit<HTMLButtonAttributes, 'class'> & {
     class?: ClassName;
     icons?: string[];
     size?: number | string;
   };
-
   const {
     class: className,
     type = 'button',
@@ -22,22 +21,7 @@
     size = '1.25em',
     ...rest
   }: Props = $props();
-
   if (icons.length === 1) icons.push(icons[0]);
-
-  /*
-  let className: ClassName = undefined;
-  export { className as class };
-
-  export let label = 'color theme';
-
-  export let icons = [
-    // 'ic:twotone-dark-mode', 'ic:twotone-light-mode'
-    'line-md:sunny-outline-to-moon-loop-transition',
-    'line-md:moon-to-sunny-outline-loop-transition'
-  ];
-  export let size: number | string = '1.25em';
-  */
 
   let dark = $state(true);
   function toggle() {

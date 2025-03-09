@@ -4,8 +4,13 @@
   import { swipe } from '$lib/utils/Swipe.js';
   import { navigate, routeTransitionMode } from '$lib/stores/index.js';
 
-  export let scope: string[];
-  export let paging = false;
+  const {
+    scope,
+    paging = false
+  }: {
+    scope: string[];
+    paging: boolean;
+  } = $props();
 
   const modeDefault = $routeTransitionMode;
 

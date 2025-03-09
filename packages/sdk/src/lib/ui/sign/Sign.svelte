@@ -1,23 +1,29 @@
 <script lang="ts">
   import Icon from '../../app/iconify/Icon.svelte';
-  import { twMerge } from 'tailwind-merge';
 
-  let className: ClassName = 'top-2 left-2';
-  export { className as class };
-
-  export let icon = 'mdi:link-variant';
-
-  export let link = false;
-
-  export let small = false;
-
-  export let auto = false;
-  export let dark = false;
-  export let light = false;
+  import type { IconifyIconAttributes } from '../../app/iconify/index.d.ts';
+  type Props = Omit<IconifyIconAttributes, 'icon'> & {
+    icon?: string;
+    link?: boolean;
+    small?: boolean;
+    auto?: boolean;
+    dark?: boolean;
+    light?: boolean;
+  };
+  const {
+    icon = 'mdi:link-variant',
+    class: className,
+    link = false,
+    small = false,
+    auto = false,
+    dark = false,
+    light = false,
+    ...rest
+  }: Props = $props();
 </script>
 
 <Icon
-  class={twMerge(
+  class={[
     'absolute z-10',
     small ? 'h-5 w-5' : 'h-7 w-7',
     (auto || light || dark) && 'rounded-full p-1 shadow-md',
@@ -28,5 +34,6 @@
     'group-oversee:opacity-100 opacity-70',
     'group-oversee:mt-1 group-oversee:animate-bounce',
     className
-  )}
-  {icon} />
+  ]}
+  {icon}
+  {...rest} />

@@ -2,8 +2,8 @@
   import { twMerge } from 'tailwind-merge';
   import placeholder from '../../assets/images/placeholder.js';
   import type { Snippet } from 'svelte';
-  import type { SvelteHTMLElements } from 'svelte/elements';
 
+  import type { SvelteHTMLElements } from 'svelte/elements';
   type Props = Omit<SvelteHTMLElements['figure'], 'class'> & {
     class?: ClassName;
     alt?: string;
@@ -14,7 +14,6 @@
     before?: Snippet;
     after?: Snippet;
   };
-
   const {
     children,
     class: className,
@@ -27,26 +26,8 @@
     after,
     ...rest
   }: Props = $props();
-
   const { src, width, height, format: _f, orientation: _o, ...caption } = data as ImageMetainfo;
   const entries = Object.entries(caption);
-
-  /*
-  export let data: unknown;
-  const { src, width, height, format: _f, orientation: _o, ...caption } = data as ImageMetainfo;
-  const entries = Object.entries(caption);
-
-  let className: ClassName = undefined;
-  export { className as class };
-  export let style: string | undefined = undefined;
-  export let alt = '';
-
-  export let custom: Record<string, ClassName> = {};
-
-  export let native = false;
-  export let loaded: ((x?: Event | HTMLElement) => void) | undefined = undefined;
-  */
-
   const handleLoad = native && loaded ? (ev: Event) => loaded?.call(ev) : undefined;
 </script>
 

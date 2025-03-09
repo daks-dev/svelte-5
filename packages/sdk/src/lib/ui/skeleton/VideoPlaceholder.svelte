@@ -1,16 +1,23 @@
 <script lang="ts">
   import { BROWSER } from 'esm-env';
-  import { onMount } from 'svelte';
   import { twMerge } from 'tailwind-merge';
+  import { onMount } from 'svelte';
 
-  let className: ClassName = 'max-w-sm h-56';
-  export { className as class };
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
+    class?: ClassName;
+    animate?: string;
+    size?: number | string;
+  };
+  const {
+    class: className = 'max-w-sm h-56',
+    'aria-hidden': ariaHidden = true,
+    animate = 'animate-pulse hover:animation-paused',
+    size = 48,
+    ...rest
+  }: Props = $props();
 
-  export let animate = 'animate-pulse hover:animation-paused';
-
-  export let size = '48';
-
-  let visible = false;
+  let visible = $state(false);
   onMount(() => (visible = BROWSER));
 </script>
 
@@ -24,7 +31,8 @@
       animate,
       className
     )}
-    aria-hidden="true">
+    aria-hidden={ariaHidden}
+    {...rest}>
     <svg
       width={size}
       height={size}

@@ -1,36 +1,25 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { twMerge } from 'tailwind-merge';
+  import { onMount } from 'svelte';
 
   import icon from './default.svg?no-inline';
 
   import type { SvelteHTMLElements } from 'svelte/elements';
-
   type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
     class?: ClassName;
     image?: string;
     duration?: number;
     delay?: number;
   };
-
   const {
     children,
     class: className,
     image = icon,
-    duration = 500,
+    duration = 425,
     delay = 75,
     'aria-hidden': ariaHidden = true,
     ...rest
   }: Props = $props();
-
-  /*
-  let className: ClassName = 'bg-neutral-100 dark:bg-gray-800';
-  export { className as class };
-
-  export let image = icon;
-  export let delay: number | string = 75;
-  export let duration: number | string = 500;
-  */
 
   let node: HTMLElement;
 
@@ -65,4 +54,5 @@
   style:background-image={image ? `url(${image})` : undefined}
   aria-hidden={ariaHidden}
   {...rest}>
+  {@render children?.()}
 </div>
