@@ -1,28 +1,38 @@
 <script lang="ts">
   import dayjs from 'dayjs';
   import custom from 'dayjs/plugin/customParseFormat.js';
-
   dayjs.extend(custom);
 
   import { twMerge } from 'tailwind-merge';
 
-  let className: ClassName = undefined;
-  export { className as class };
+  import type { HTMLTimeAttributes } from 'svelte/elements';
 
-  export let d: string | Date;
-  export { d as date };
-  export let parse: string | undefined = undefined;
+  type Props = Omit<HTMLTimeAttributes, 'class'> & {
+    class?: ClassName;
+    parse: string;
+    date: string | Date;
+    locale?: 'en-US' | 'ru-RU';
+    year?: 'numeric' | '2-digit';
+    month?: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow';
+    day?: 'numeric' | '2-digit';
+  };
+
+  const {
+    class: className,
+    date: d,
+    parse,
+    locale = 'ru-RU',
+    year = 'numeric',
+    month = 'long',
+    day = 'numeric',
+    ...rest
+  }: Props = $props();
   const date = typeof d === 'string' ? dayjs(d, parse).toDate() : d;
-
-  export let locale: 'en-US' | 'ru-RU' = 'ru-RU';
-  export let year: 'numeric' | '2-digit' = 'numeric';
-  export let month: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow' = 'long';
-  export let day: 'numeric' | '2-digit' = 'numeric';
 </script>
 
 <time
   class={twMerge(className)}
   datetime={date.toISOString()}
-  {...$$restProps}>
+  {...rest}>
   {date.toLocaleDateString(locale, { year, month, day })}
 </time>

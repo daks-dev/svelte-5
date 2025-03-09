@@ -1,12 +1,24 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { twMerge } from 'tailwind-merge';
+  import { onMount } from 'svelte';
 
-  let className: ClassName = 'bg-neutral-100 dark:bg-gray-800';
-  export { className as class };
+  import type { SvelteHTMLElements } from 'svelte/elements';
 
-  export let delay: number | string = 75;
-  export let duration: number | string = 5000;
+  type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
+    class?: ClassName;
+    hidden: boolean;
+    duration?: number | string;
+    delay?: number | string;
+  };
+
+  const {
+    children,
+    class: className,
+    hidden: _h,
+    duration = 500,
+    delay = 75,
+    ...rest
+  }: Props = $props();
 
   let node: HTMLElement;
 
@@ -29,8 +41,11 @@
     'transition-opacity ease-out',
     className
   )}
-  hidden>
-  <slot>
+  hidden
+  {...rest}>
+  {#if children}
+    {@render children()}
+  {:else}
     <svg
       class="3xl:w-[10vmin] w-[35vmin] sm:w-[30vmin] md:w-[25vmin] lg:w-[20vmin] 2xl:w-[15vmin]"
       viewBox="0 0 24 24"
@@ -141,5 +156,5 @@
           values="1;13" />
       </rect>
     </svg>
-  </slot>
+  {/if}
 </div>

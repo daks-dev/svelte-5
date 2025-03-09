@@ -5,17 +5,30 @@
   import { twMerge } from 'tailwind-merge';
   import { routeTransitionMode } from '$lib/stores/index.js';
 
-  let className: ClassName = undefined;
-  export { className as class };
+  import type { SvelteHTMLElements } from 'svelte/elements';
 
-  export let refresh: string;
-  export let mode: number | string = 0;
-  export let roots: string | string[] = ['/', '/admin', '/search'];
-  typeof roots === 'string' && (roots = roots.split(' '));
-  export let tag = 'div';
+  type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
+    refresh: string;
+    class?: ClassName;
+    mode?: number | string;
+    roots?: string | string[];
+    tag?: string;
+    duration?: number;
+    delay?: number;
+  };
 
-  export let duration = 500;
-  export let delay = 200;
+  const {
+    children,
+    refresh,
+    class: className,
+    mode = 0,
+    roots: r = ['/', '/admin', '/search'],
+    tag = 'div',
+    duration = 500,
+    delay = 200,
+    ...rest
+  }: Props = $props();
+  const roots = typeof r === 'string' ? r.split(' ') : r;
 
   $routeTransitionMode = Number(mode);
 
@@ -86,7 +99,8 @@
     this={tag}
     in:transition={options().in}
     out:transition={options().out}
-    class={twMerge(className)}>
-    <slot />
+    class={twMerge(className)}
+    {...rest}>
+    {@render children?.()}
   </svelte:element>
 {/key}

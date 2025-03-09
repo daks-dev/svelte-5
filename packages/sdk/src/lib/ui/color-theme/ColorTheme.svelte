@@ -1,8 +1,31 @@
 <script lang="ts">
+  import { twMerge } from 'tailwind-merge';
   import { onMount } from 'svelte';
   import Icon from '../../app/iconify/Icon.svelte';
-  import { twMerge } from 'tailwind-merge';
+  import type { HTMLButtonAttributes } from 'svelte/elements';
 
+  type Props = Omit<HTMLButtonAttributes, 'class'> & {
+    class?: ClassName;
+    icons?: string[];
+    size?: number | string;
+  };
+
+  const {
+    class: className,
+    type = 'button',
+    'aria-label': label = 'color theme',
+    icons = [
+      // 'ic:twotone-dark-mode', 'ic:twotone-light-mode'
+      'line-md:sunny-outline-to-moon-loop-transition',
+      'line-md:moon-to-sunny-outline-loop-transition'
+    ],
+    size = '1.25em',
+    ...rest
+  }: Props = $props();
+
+  if (icons.length === 1) icons.push(icons[0]);
+
+  /*
   let className: ClassName = undefined;
   export { className as class };
 
@@ -14,8 +37,9 @@
     'line-md:moon-to-sunny-outline-loop-transition'
   ];
   export let size: number | string = '1.25em';
+  */
 
-  let dark: boolean;
+  let dark = $state(true);
   function toggle() {
     dark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('color-theme', dark ? 'dark' : 'light');
@@ -40,10 +64,11 @@
 </svelte:head>
 
 <button
-  on:click={toggle}
+  onclick={toggle}
   class={twMerge('hover:cursor-pointer', className)}
-  type="button"
-  aria-label={label}>
+  {type}
+  aria-label={label}
+  {...rest}>
   <span class="sr-only">{@html label}</span>
   <Icon
     class="pointer-events-none"

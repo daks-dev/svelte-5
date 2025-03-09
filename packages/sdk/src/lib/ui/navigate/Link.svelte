@@ -5,9 +5,9 @@
   import Nav from './Nav.js';
 
   /*
-  import type { HTMLAnchorAttributes } from 'svelte/elements';
+  import type { SvelteHTMLElements } from 'svelte/elements';
 
-  type Props = Omit<HTMLAnchorAttributes, 'class'> & {
+  type Props = Omit<SvelteHTMLElements['a'], 'class'> & {
     class?: ClassName;
     base?: string;
     target?: string;
