@@ -10,14 +10,13 @@
   export let id: string | undefined = undefined;
   export let hidden: boolean;
 
-  export let items: Partial<NavItem>[] = [];
+  export let items: NavItem[] = [];
   export let base: string | undefined = undefined;
 
   export let origin = 'top';
   export let duration = 300;
 </script>
 
-<!-- style:transform-origin={origin} -->
 <div
   {id}
   role="menu"
@@ -29,17 +28,18 @@
     'transition-all ease-in-out',
     classWrapper
   )}
+  style:transform-origin={origin}
   style:transition-duration={`${duration}ms`}
   aria-orientation="vertical"
   aria-hidden={hidden}>
   {#if items}
     {#each items as item}
       <Link
-        on:click={item.handle ? item.handle : () => {}}
-        role="menuitem"
+        onclick={item.handle ? item.handle : () => {}}
         class={twMerge('flex w-full items-center', classLink)}
         {base}
         {...item}
+        role="menuitem"
         tabindex={hidden ? -1 : undefined} />
     {/each}
   {:else}

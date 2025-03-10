@@ -65,7 +65,7 @@ export { default as Figure } from './ui/figure/Figure.svelte';
 export { default as FormattedDate } from './ui/formatted-date/FormattedDate.svelte';
 
 export type { NavBrand, NavItem, NavSite } from './ui/navigate/index.d.ts';
-export { default as Nav } from './ui/navigate/Nav.js';
+export { default as Nav } from './ui/navigate/Nav.svelte.js';
 export { default as Link } from './ui/navigate/Link.svelte';
 export { default as NavHome } from './ui/navigate/NavHome.svelte';
 export { default as NavPath } from './ui/navigate/NavPath.svelte';

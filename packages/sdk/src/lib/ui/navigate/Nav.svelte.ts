@@ -1,38 +1,33 @@
-import type { NavItem } from './index.js';
+import { page } from '$app/state';
+import type { NavItem } from './index.d.ts';
 
-class Nav implements Partial<NavItem> {
-  href?: string;
-  target?: string;
-  rel?: string;
-  role?: string;
-  itemprop?: string;
+type Options = {
+  pointer?: boolean;
+  disabled?: boolean;
+};
 
+class Nav implements NavItem {
+  href?: string | null;
+  target?: string | null;
+  rel?: string | null;
+  role?: string | null;
+  itemprop?: string | null;
   base?: string;
   disallow?: true;
 
-  constructor(args: Partial<NavItem>) {
+  pointer?: boolean = false;
+  disabled?: boolean = false;
+
+  private pathname = $derived(page.url.pathname);
+
+  constructor(args: NavItem, opts: Options = {}) {
     Object.assign(this, args);
     if (this.href) {
       this.base && this.href && (this.href = `${this.base}${this.href}`);
       this.external && (this.target ??= '_blank');
       (this.external || this.disallow) && (this.rel ??= 'nofollow');
     }
-  }
-
-  private __pointer = false;
-  set pointer(val: boolean) {
-    this.__pointer = val;
-  }
-  get pointer() {
-    return this.__pointer;
-  }
-
-  private __pathname!: string;
-  set pathname(val: string) {
-    this.__pathname = val;
-  }
-  get pathname() {
-    return this.__pathname;
+    Object.assign(this, opts);
   }
 
   get active() {
@@ -69,21 +64,21 @@ class Nav implements Partial<NavItem> {
     };
   }
 
-  static props = function (item: Partial<NavItem>) {
+  static props = function (item: NavItem) {
     const { class: _0, base: _1, disallow: _2, handle: _3, links: _4, ...props } = item;
     return props;
   };
 
-  static map = function (items?: Partial<NavItem>[], fully = false, base = '') {
+  static map = function (items?: NavItem[], fully = false, base = '') {
     return items?.length
       ? items.reduce((map, item) => {
-          if (!item.disallow || fully) {
-            const href = `${item.base ?? base}${item.href ?? ''}`;
-            item.href && map.push(href);
-            item.links && map.push(...Nav.map(item.links, fully, href));
-          }
-          return map;
-        }, Array(0))
+        if (!item.disallow || fully) {
+          const href = `${item.base ?? base}${item.href ?? ''}`;
+          item.href && map.push(href);
+          item.links && map.push(...Nav.map(item.links, fully, href));
+        }
+        return map;
+      }, Array(0))
       : [];
   };
 }

@@ -1,44 +1,44 @@
-export interface NavBrand {
-  custom: Record<string, ClassName>;
-  label: string;
-  alt: string;
-  size: number | string;
-  home: string;
-  inner: string;
-}
-
 export interface NavLink {
-  href: string;
-  target: string;
-  title: string;
-  rel: string;
-  role: string;
-  itemprop: string;
+  href?: string | null;
+  target?: string | null;
+  title?: string | null;
+  rel?: string | null;
+  role?: string | null;
+  itemprop?: string | null;
 }
 
 export interface NavItem extends NavLink {
-  class: ClassName;
-  label: string;
-  icon: string;
-  base: string;
-  disallow: boolean;
+  class?: ClassName;
+  label?: string | null;
+  icon?: string;
+  base?: string;
+  disallow?: boolean;
+  links?: NavItem[];
   // FIXME:
-  handle: (...x: unknown[]) => unknown | void;
-  links: Partial<NavItem>[];
+  handle?: (...x: unknown[]) => unknown | void;
+}
+
+export interface NavBrand {
+  custom?: Record<string, ClassName>;
+  label?: string | null;
+  alt?: string | null;
+  size?: number | string;
+  home?: string;
+  inner?: string;
 }
 
 export interface NavSite {
   navbar: {
-    links: Partial<NavItem>[];
+    links: NavItem[];
     scope?: string[];
-    brand?: Partial<NavBrand>;
+    brand?: NavBrand;
   };
   draver?: {
-    links: Partial<NavItem>[];
+    links: NavItem[];
   };
   footer?: {
-    links: Partial<NavItem>[];
-    copylink?: Partial<NavItem>;
+    links: NavItem[];
+    copylink?: NavItem;
   };
   allow?: string[];
 }
@@ -48,5 +48,5 @@ export { default as NavHome } from './NavHome.svelte';
 export { default as NavPath } from './NavPath.svelte';
 export { default as NavToTop } from './NavToTop.svelte';
 
-import Nav from './Nav.js';
+import Nav from './Nav.svelte.js';
 export default Nav;

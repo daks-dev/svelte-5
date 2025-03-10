@@ -5,7 +5,7 @@
   let className: undefined | string = undefined;
   export { className as class };
 
-  export let label: string | undefined = undefined;
+  export let label: string | null | undefined = undefined;
   export let icon: string | undefined = undefined;
 
   export let size: number | string | undefined = undefined;

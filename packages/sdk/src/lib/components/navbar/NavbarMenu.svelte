@@ -36,7 +36,7 @@
         on:click
         {classLink}
         {link}
-        index={hidden ? -1 : undefined} />
+        tabindex={hidden ? -1 : undefined} />
     {:else}
       <Link
         on:click

@@ -2,7 +2,7 @@
   // TODO:
   // import { env } from '$env/dynamic/public';
   import { beforeNavigate, afterNavigate } from '$app/navigation';
-  import Nav from '../../ui/navigate/Nav.js';
+  import Nav from '../../ui/navigate/Nav.svelte.js';
   import Swiping from '../../ui/swiping/Swiping.svelte';
   import { twMerge } from 'tailwind-merge';
   import NavbarMenu from './NavbarMenu.svelte';

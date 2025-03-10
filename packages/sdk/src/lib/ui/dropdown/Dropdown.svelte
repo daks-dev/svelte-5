@@ -1,13 +1,43 @@
 <script lang="ts">
+  import { twMerge } from 'tailwind-merge';
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
   import Icon, { isIcon } from '../../app/iconify/index.js';
   import Link from '../navigate/Link.svelte';
-  import { twMerge } from 'tailwind-merge';
   import { outside, uuid } from '../../utils/index.js';
   import DropdownWrapper from './DropdownWrapper.svelte';
-  import type { NavItem } from '../navigate/index.d.ts';
 
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  import type { NavItem } from '../navigate/index.d.ts';
+  type Props = Omit<SvelteHTMLElements['a'], 'class'> &
+    NavItem & {
+      classWrapper?: ClassName;
+      inline?: boolean;
+      sign?: boolean;
+      size?: number | string;
+    };
+  const {
+    // children,
+    class:
+      classLink = 'py-2 px-4 bg-inherit hover:bg-gray-400/25 rounded-sm border border-gray-500/50',
+    classWrapper,
+    role = 'button',
+    tabindex = 0,
+    label,
+    href,
+    base,
+    links: items = [],
+    inline = false,
+    sign: s,
+    size = '1.25em',
+    'aria-expanded': _0,
+    'aria-haspopup': _1,
+    'aria-controls': _2,
+    ...rest
+  }: Props = $props();
+  const sign = s ?? !isIcon(label);
+
+  /*
   export let classWrapper: ClassName = undefined;
   let classLink: ClassName =
     'py-2 px-4 bg-inherit hover:bg-gray-400/25 rounded-sm border border-gray-500/50';
@@ -25,10 +55,11 @@
   export let items: NavItem[] = [];
 
   export let index: number | undefined = undefined;
+*/
 
   const id = uuid();
 
-  let hidden = true;
+  let hidden = $state(true);
 
   function close() {
     hidden = true;
@@ -58,24 +89,26 @@
 
 <div
   use:outside={close}
-  on:click={close}
-  on:keydown={handleKey}
-  role="button"
+  onclick={close}
+  onkeydown={handleKey}
   class={twMerge('relative', inline ? 'inline-flex' : 'flex', classWrapper)}
-  tabindex={index}>
+  role="button"
+  {tabindex}>
   <Link
-    on:click={handleClick}
-    on:dblclick={handleDblClick}
+    onclick={handleClick}
+    ondblclick={handleDblClick}
     class={twMerge('flex w-fit min-w-full items-center', classLink)}
     {label}
     {href}
     {base}
     {size}
     pointer
+    {role}
+    {tabindex}
     aria-expanded={!hidden}
     aria-haspopup={!hidden}
     aria-controls={id}
-    tabindex={index}>
+    {...rest}>
     <svelte:fragment slot="after">
       {#if sign}
         <Icon
@@ -87,6 +120,8 @@
     </svelte:fragment>
   </Link>
 
+  <!-- TODO:-->
+  <!-- svelte-ignore slot_element_deprecated -->
   {#if items.length}
     <DropdownWrapper
       {id}
