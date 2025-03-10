@@ -5,10 +5,14 @@
   import Link from './Link.svelte';
   import type { NavBrand } from './index.d.ts';
 
-  let className: ClassName = undefined;
-  export { className as class };
+  // TODO:
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['a'], 'class'> & {
+    class?: ClassName;
+    brand: NavBrand;
+  };
+  const { children, class: className, brand, ...rest }: Props = $props();
 
-  export let brand: Partial<NavBrand>;
   const { custom = {}, label = 'home page', alt = '', size = '1.25em', home, inner } = brand;
 </script>
 

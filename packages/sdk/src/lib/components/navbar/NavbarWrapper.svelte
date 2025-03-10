@@ -1,22 +1,31 @@
 <script lang="ts">
-  import outside from '../../utils/outside.js';
   import { twMerge } from 'tailwind-merge';
+  import outside from '../../utils/outside.js';
 
-  let className: ClassName = undefined;
-  export { className as class };
-  export let classFrame: ClassName = 'frame-xl/1';
+  type Props = {
+    class?: ClassName;
+    classFrame?: ClassName;
+    disabled?: boolean;
+    duration?: number | string;
+    close: () => void;
+  };
+  const {
+    class: className,
+    classFrame = 'frame-xl/1',
+    disabled,
+    duration = 300,
+    close
+  }: Props = $props();
 
-  export let close: () => void;
-  export let disabled: boolean;
-  export let duration = 300;
-
-  let scrollY: number = 0;
+  let scrollY = $state(0);
   let navbar: HTMLElement;
-  $: scrolled = scrollY > navbar?.clientHeight;
+  let scrolled = $derived.by(() => scrollY > navbar?.clientHeight);
 </script>
 
 <svelte:window bind:scrollY />
 
+<!-- TODO: -->
+<!-- svelte-ignore slot_element_deprecated -->
 <div
   bind:this={navbar}
   id="navbar"

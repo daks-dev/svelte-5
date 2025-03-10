@@ -21,7 +21,7 @@
       on:click={handle}
       on:keypress
       tabindex="-1"
-      class="flex cursor-pointer flex-col items-center justify-start"
+      class="flex flex-col items-center justify-start hover:cursor-pointer"
       title="copy to clipboard"
       data-icon={name}>
       <Icon

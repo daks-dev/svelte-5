@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { beforeNavigate } from '$app/navigation';
-  import Icon from '../../app/iconify/Icon.svelte';
-  import { navigate } from '../../stores/index.js';
   import { twMerge } from 'tailwind-merge';
+  import { beforeNavigate } from '$app/navigation';
+  import { navigate } from '../../stores/index.js';
+  import Icon from '../../app/iconify/Icon.svelte';
   import Link from '../navigate/Link.svelte';
 
-  let className: ClassName = undefined;
-  export { className as class };
-
-  export let icon = 'ic:round-play-arrow';
-  export let size: number | string = '1.25em';
+  type Props = {
+    class?: ClassName;
+    icon?: string;
+    size?: number | string;
+  };
+  const { class: className, icon = 'ic:round-play-arrow', size = '1.25em' }: Props = $props();
 
   beforeNavigate(navigate.clear);
 </script>

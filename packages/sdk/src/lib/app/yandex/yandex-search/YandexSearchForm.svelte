@@ -107,7 +107,7 @@
           !reverse && 'right-0',
           text ? 'bottom-full bg-transparent' : 'bottom-0 bg-gray-400 opacity-80',
           'font-semibold text-gray-500 hover:text-red-800',
-          'cursor-pointer',
+          'hover:cursor-pointer',
           'transition-all duration-500 ease-in-out'
         )}>
         Esc

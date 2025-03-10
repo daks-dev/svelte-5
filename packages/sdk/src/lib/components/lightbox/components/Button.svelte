@@ -2,20 +2,33 @@
   import { twMerge } from 'tailwind-merge';
   import type { Options } from '../index.d.ts';
 
+  type Props = {
+    class?: ClassName;
+    options: Partial<Options>;
+    next?: boolean;
+    countItems: number;
+    activeItem: number;
+  };
+  const { class: className, options, next = false, countItems, activeItem }: Props = $props();
+
+  /*
   export let options: Partial<Options>;
 
   export let next: boolean = false;
 
   export let countItems: number;
   export let activeItem: number;
+  */
 
-  $: disabled =
-    options.behaviour !== 'loop' && (next ? activeItem === countItems - 1 : activeItem === 0);
+  let disabled = $derived.by(
+    () => options.behaviour !== 'loop' && (next ? activeItem === countItems - 1 : activeItem === 0)
+  );
 </script>
 
+<!-- TODO: -->
+<!-- svelte-ignore event_directive_deprecated -->
 <button
   on:click|preventDefault|stopPropagation
-  {disabled}
   class={twMerge(
     'hidden',
     'absolute inset-y-0 z-20',
@@ -25,9 +38,11 @@
     'items-center',
     'text-gray-200/50 hover:text-white disabled:text-black',
     'hover:bg-black/50 active:bg-transparent lg:bg-black/25',
-    'hover:cursor-pointer'
+    'hover:cursor-pointer',
+    className
   )}
-  aria-label={next ? 'next' : 'prev'}>
+  aria-label={next ? 'next' : 'prev'}
+  {disabled}>
   <svg
     class={twMerge(
       'disabled',

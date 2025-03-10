@@ -15,10 +15,10 @@ class Nav implements NavItem {
   base?: string;
   disallow?: true;
 
-  pointer?: boolean = false;
-  disabled?: boolean = false;
+  pointer: boolean = false;
+  disabled: boolean = false;
 
-  private pathname = $derived(page.url.pathname);
+  private pathname: string = $derived(page.url.pathname);
 
   constructor(args: NavItem, opts: Options = {}) {
     Object.assign(this, args);
@@ -30,12 +30,12 @@ class Nav implements NavItem {
     Object.assign(this, opts);
   }
 
-  get active() {
-    return this.pathname === this.href;
-  }
-
   get external() {
     return this.href?.includes('//');
+  }
+
+  get active() {
+    return this.pathname === this.href;
   }
 
   get tag(): 'a' | 'span' | 'button' {

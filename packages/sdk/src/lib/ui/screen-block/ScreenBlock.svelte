@@ -13,7 +13,7 @@
   };
   const {
     children,
-    class: className,
+    class: className = 'bg-neutral-100 dark:bg-gray-800',
     image = icon,
     duration = 425,
     delay = 75,

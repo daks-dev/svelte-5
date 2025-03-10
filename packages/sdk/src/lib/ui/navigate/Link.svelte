@@ -1,6 +1,5 @@
 <script lang="ts">
   import { twMerge } from 'tailwind-merge';
-  // import { page } from '$app/state';
   import { IconTest } from '../../app/iconify/index.js';
   import Nav from './Nav.svelte.js';
 
@@ -16,7 +15,7 @@
     pointer?: boolean;
     disabled?: boolean;
   };
-  let {
+  const {
     children,
     class: className,
     href,
@@ -26,7 +25,7 @@
     role,
     itemprop,
     disallow,
-    label,
+    label: l,
     icon,
     size,
     pointer = false,
@@ -34,7 +33,7 @@
     'aria-label': ariaLabel,
     ...rest
   }: Props = $props();
-  label ??= ariaLabel;
+  const label = l ?? ariaLabel;
 
   const item = new Nav(
     {
@@ -63,7 +62,7 @@
   class={twMerge(
     'select-none',
     item.tag === 'button' && 'inherit',
-    item.pointer && 'cursor-pointer',
+    item.pointer && 'hover:cursor-pointer',
     item.disabled && 'disabled',
     className
   )}
